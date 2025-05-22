@@ -650,9 +650,6 @@ livros = [
 def obter_livros():
     return jsonify(livros)
 
-
-       
-
         # Consultar (livro específico)
 @app.route('/livros/<int:id>',methods=['GET'])        
 def obter_livro_por_id(id):
