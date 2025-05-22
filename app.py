@@ -666,6 +666,7 @@ def editar_livro(id):
             livro['titulo'] = dados['titulo']
             livro['autor'] = dados['autor']
             return jsonify(livro)
+        
         # Deletar
 @app.route('/livros/<int:id>',methods=['DELETE'])
 def deletar_livro(id):
@@ -673,6 +674,7 @@ def deletar_livro(id):
         if livro.get('id') == id:
             livros.remove(livro)
             return jsonify(livro)
+        
         # Criar
 @app.route('/livros',methods=['POST'])
 def criar_livro():
