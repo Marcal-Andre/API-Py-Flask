@@ -661,8 +661,32 @@ def obter_livro_por_id(id):
             return jsonify(livro)
      
         # Editar
+@app.route('/livros/<int:id>',methods=['PUT'])
+def editar_livro(id):
+    for livro in livros:
+        if livro.get('id') == id:
+            dados = request.get_json()
+            livro['titulo'] = dados['titulo']
+            livro['autor'] = dados['autor']
+            return jsonify(livro)
         # Deletar
+@app.route('/livros/<int:id>',methods=['DELETE'])
+def deletar_livro(id):
+    for livro in livros:
+        if livro.get('id') == id:
+            livros.remove(livro)
+            return jsonify(livro)
         # Criar
+@app.route('/livros',methods=['POST'])
+def criar_livro():
+    dados = request.get_json()
+    novo_livro = {
+        'id': len(livros) + 1,
+        'titulo': dados['titulo'],
+        'autor': dados['autor']
+    }
+    livros.append(novo_livro)
+    return jsonify(novo_livro), 201
 
 app.run(port=5000,host='localhost',debug=True) 
 
