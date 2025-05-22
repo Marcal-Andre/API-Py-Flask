@@ -645,7 +645,6 @@ livros = [
             'autor': 'Khaled Hosseini',
         },
 ]
-
         # Consultar(todos)
 @app.route('/livros',methods=['GET']) 
 def obter_livros():
